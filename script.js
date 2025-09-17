@@ -6,39 +6,43 @@ const bankAccount = {
     ownerName: "Max",
     accountNumber: "12345678",
     balance: 1000,
-
+ 
+    
 
     deposit(amount){
-        this.balance += amount;
-        alert(`гроші успішно зараховані на рахунок ${this.balance}`)
+        this.balance += amount
+        alert(`гроші успішоно зараховані ваш баланс ${this.balance}`)
     },
 
-    withdraw(amount){
+
+
+    whithdraw(amount){
         if(amount > this.balance){
-           alert("недостатньо коштів на рахунку");
+            alert("на вашому балансі недостатньо коштів")
         }else{
-            this.balance -= amount;
-            alert(`гроші успішно списані з балансу ${this.balance}`)
+            this.balance -= amount
+            alert(`гроші успішно списані з балансу сума на балансі ${this.balance}`)
         }
     }
 }
 
 
 
-if(confirm("ви хочете попвнити рахунок")){
-    const amount = Number(prompt("ведіть суму"))
-    if(amount > 0) {
-        bankAccount.deposit(amount);
-    }else{
-        alert("некоректна сума");
-    }
-}else if (confirm("ви хочете зняти з рахунку")){
+if(confirm("ви бажаєте поповнити рахунок?")){
     const amount = Number(prompt("ведіть суму"))
     if(amount > 0){
-        bankAccount.withdraw(amount);
+        bankAccount.deposit(amount)
     }else{
-        alert("некоректна сума")
+        alert("некоректне число")
+    }
+}else if(confirm("ви бажаєте зняти гроші з рахунку?")){
+    const amount = Number(prompt("ведіть суму"))
+    if(amount > 0){
+        bankAccount.whithdraw(amount)
+    }else{
+        alert("на вашому балансі недостатьно коштів")
     }
 }else{
-    alert(`ваш баланс ${bankAccount.balance}`)
+    console.log(`на вашому балансі ${bankAccount.balance}`);
 }
+console.log(bankAccount.balance);
